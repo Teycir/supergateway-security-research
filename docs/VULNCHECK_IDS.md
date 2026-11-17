@@ -4,8 +4,8 @@ VulnCheck submissions for independent attribution and CVE assignment.
 
 ## Submitted
 
-- SGW-2026-001: Pending (to be submitted)
-- SGW-2026-002: `8d6ec57c-cd0e-4ea1-9727-4608822f3442` (submitted 2026-11-17, CSWSH vulnerability)
+- SGW-2026-001 (DoS): `8d6ec57c-cd0e-4ea1-9727-4608822f3442` (submitted 2026-11-17)
+- SGW-2026-002 (CSWSH): `844df8d2-8b17-4072-8af1-ea68aab893fe` (submitted 2026-11-17)
 
 ## Notes
 

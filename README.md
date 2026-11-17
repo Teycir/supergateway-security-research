@@ -65,7 +65,8 @@ Both advisories were submitted and published via the GitHub Security Advisory AP
 - 2026-11-17 — findings discovered and verified; report and PoCs produced.
 - 2026-11-17 — re-verified 36/36; patch validated; this package assembled.
 - 2026-11-17 — GHSA advisories submitted and published (see table above).
-- **Vendor notification: not yet sent.** CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`. For canonical disclosure, use GitHub's private "Report a vulnerability" flow addressed to upstream maintainer @Nedomas, referencing upstream PR #178 as prior art for the fix shape, and cite the GHSA IDs above as the reproduced evidence.
+- 2026-11-17 — Issue #378 opened on upstream repository: https://github.com/supercorp-ai/supergateway/issues/378
+- **CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`. Awaiting upstream response for canonical GHSA submission and CVE assignment.**
 
 Contact: `<SECURITY-CONTACT>` (replace before publication). The maintainers' own policy is in the upstream `SECURITY.md`.
 

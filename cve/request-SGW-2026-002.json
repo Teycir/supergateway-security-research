@@ -1,0 +1,85 @@
+{
+  "dataType": "CVE_RECORD",
+  "dataVersion": "5.1",
+  "cveMetadata": {
+    "cveId": "CVE-2026-XXXXX",
+    "assignerOrgId": "<CNA-ORG-UUID>",
+    "state": "PUBLISHED"
+  },
+  "containers": {
+    "cna": {
+      "providerMetadata": {
+        "orgId": "<CNA-ORG-UUID>",
+        "shortName": "<CNA-SHORT-NAME>"
+      },
+      "title": "supergateway: Cross-Site WebSocket Hijacking in stdio-to-WebSocket mode",
+      "descriptions": [
+        {
+          "lang": "en",
+          "value": "The stdio-to-WebSocket mode of supergateway through 4.2.2 (commit 5ad19d3) accepts WebSocket upgrade requests from any Origin and does not require authentication by default (src/gateways/stdioToWs.ts). WebSocket handshakes are not subject to the same-origin policy, so any page a victim visits can connect to ws://127.0.0.1:<port>/ws, initialize an MCP session and invoke tools such as filesystem reads or shell-backed operations with the victim's privileges. Origins including http://evil.example, null, https://attacker.test:4443 and http://localhost:9999 were accepted; exfiltration of a local file was demonstrated in a real browser (12/12 runs). Enabling SUPERGATEWAY_API_KEY causes unauthenticated upgrades to be refused."
+        }
+      ],
+      "affected": [
+        {
+          "vendor": "supercorp-ai",
+          "product": "supergateway",
+          "collectionURL": "https://registry.npmjs.org",
+          "packageName": "supergateway",
+          "versions": [
+            {
+              "version": "0",
+              "lessThanOrEqual": "4.2.2",
+              "status": "affected",
+              "versionType": "semver"
+            }
+          ],
+          "defaultStatus": "unaffected"
+        }
+      ],
+      "problemTypes": [
+        {
+          "descriptions": [
+            {
+              "cweId": "CWE-1385",
+              "description": "Missing Origin Validation in WebSockets",
+              "lang": "en"
+            }
+          ]
+        }
+      ],
+      "metrics": [
+        {
+          "cvssV3_1": {
+            "version": "3.1",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
+            "baseScore": 8.1,
+            "baseSeverity": "HIGH"
+          }
+        }
+      ],
+      "references": [
+        {
+          "url": "<REPO-URL>",
+          "name": "Research repository with PoC, evidence and browser proof"
+        },
+        {
+          "url": "https://github.com/supercorp-ai/supergateway",
+          "name": "supergateway upstream"
+        }
+      ],
+      "credits": [
+        {
+          "lang": "en",
+          "value": "<REPORTER-HANDLE>"
+        }
+      ],
+      "timeline": [
+        {
+          "time": "2026-11-17T00:00:00.000Z",
+          "lang": "en",
+          "value": "Vulnerability discovered and reproduced, including real-browser proof"
+        }
+      ]
+    }
+  }
+}

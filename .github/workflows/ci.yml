@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-and-verify-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shell syntax
+        run: for f in pocs/*.sh scripts/*.sh; do bash -n "$f"; done
+      - name: Node syntax
+        run: node --check pocs/cswsh_ws_poc.js
+      - name: Python syntax
+        run: python3 -m py_compile pocs/*.py
+      - name: JSON validity
+        run: for f in cve/*.json; do python3 -m json.tool "$f" >/dev/null; done
+      - name: Evidence checksums
+        run: sha256sum -c SHA256SUMS

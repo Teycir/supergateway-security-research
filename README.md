@@ -51,12 +51,14 @@ See `docs/vulnerabilities-simple.md` for simple, non-technical descriptions of b
 
 ## GHSA submission
 
-Both advisories were submitted and published via the GitHub Security Advisory API (token `Teycir`) on 2026-11-17. Because the token only has read access to upstream `supercorp-ai/supergateway`, the advisories live under the `Teycir/supergateway` fork:
+Both advisories were submitted and published via the GitHub Security Advisory API (token `Teycir`) on 2026-11-17. Because the token only has read access to upstream `supercorp-ai/supergateway`, the advisories were published under the `Teycir/supergateway` fork:
 
 | Research ID | GHSA ID | Finding | Published |
 |-------------|---------|---------|-----------|
 | SGW-2026-001 | GHSA-96g7-x7h4-cr9v | Unauthenticated remote DoS via prototype-chain `sessionId` | 2026-11-17T21:04:55Z |
 | SGW-2026-002 | GHSA-mw77-x7vj-mfcc | Cross-Site WebSocket Hijacking via missing `Origin` validation | 2026-11-17T21:05:13Z |
+
+**Status:** Published under fork (incorrect repository). Published advisories cannot be withdrawn via API. The upstream maintainers have been requested to submit canonical advisories under `supercorp-ai/supergateway` using the prepared CVE request text in `docs/cve-request.md` and `cve/`. See `docs/maintainer-notification.md` for the full notification message.
 
 ## Disclosure
 

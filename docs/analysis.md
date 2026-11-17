@@ -81,7 +81,7 @@ Captured evidence:
 
 Sandboxed iframes and some `file://`/data contexts send `Origin: null`. The server accepts it, so even pages with opaque origins can attack.
 
-## RT-03 — information disclosure in logs
+## RT-03: information disclosure in logs
 
 `POST /message?sessionId=…` is logged at `info` with the full JSON-RPC body by the request logger (`src/lib/getLogger.ts` and the SSE transport logging path). Bodies routinely contain API keys for upstream MCP servers (`_meta`, tool arguments), file contents, and session IDs. A secret marker in `_meta.password` appeared verbatim in the log (3/3). Secondary effect: anyone with log access obtains live session IDs and can POST into those sessions.
 

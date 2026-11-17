@@ -75,4 +75,5 @@ Upstream PR #178 contains prior work on the session management fix shape, which 
 I am available to discuss these findings, provide additional context, or assist with patch integration. Please let me know your preferred coordination process and timeline.
 
 Best regards,
-Teycir
+Teycir (@Teycir)
+Research repository: https://github.com/Teycir/supergateway-security-research

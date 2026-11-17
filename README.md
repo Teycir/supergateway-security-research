@@ -73,7 +73,7 @@ Contact: `<SECURITY-CONTACT>` (replace before publication). The maintainers' own
 
 ## Credits
 
-Research, exploit development, and report: `<REPORTER-HANDLE>`. Reported with coordinator assistance as applicable.
+Research, exploit development, and report: Teycir (@Teycir). Reported with coordinator assistance as applicable.
 
 ## License
 

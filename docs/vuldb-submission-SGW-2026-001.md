@@ -103,7 +103,7 @@ Validated patch available at: `patches/rt01-map-sessions.patch`
 - 2026-11-17: Patch validated (503 response, process stays alive)
 - 2026-11-17: Research repository published
 - 2026-11-17: Vendor contacted via public issue #378: https://github.com/supercorp-ai/supergateway/issues/378
-- 2026-11-17: VulDB submission (this document)
+- 2026-11-17: VulDB submission submitted (ID pending processing, estimated 6 weeks)
 
 ## Credits
 

@@ -1,0 +1,7 @@
+.work/
+.artifacts/
+cswsh_proof.txt
+node_modules/
+/received/
+__pycache__/
+*.pyc

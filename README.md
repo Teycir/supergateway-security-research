@@ -65,7 +65,7 @@ Both advisories were submitted and published via the GitHub Security Advisory AP
 - 2026-11-17 — findings discovered and verified; report and PoCs produced.
 - 2026-11-17 — re-verified 36/36; patch validated; this package assembled.
 - 2026-11-17 — GHSA advisories submitted and published (see table above).
-- 2026-11-17 — Issue #378 opened on upstream repository: https://github.com/supercorp-ai/supergateway/issues/378
+- 2026-11-17 — **Vendor contacted via public issue #378**: https://github.com/supercorp-ai/supergateway/issues/378
 - 2026-11-17 — Research repository made public: https://github.com/Teycir/supergateway-security-research
 - 2026-11-17 — VulDB submissions prepared: `docs/vuldb-submission-SGW-2026-001.md`, `docs/vuldb-submission-SGW-2026-002.md`
 - **CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`. Awaiting upstream response for canonical GHSA submission and CVE assignment.**

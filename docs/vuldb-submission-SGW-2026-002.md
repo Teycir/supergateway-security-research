@@ -129,7 +129,7 @@ if (!apiKey) {
 - 2026-11-17: Vulnerability discovered and reproduced
 - 2026-11-17: 12/12 origin sweep verified; real-browser proof captured
 - 2026-11-17: Research repository published
-- 2026-11-17: Upstream issue #378 opened
+- 2026-11-17: Vendor contacted via public issue #378: https://github.com/supercorp-ai/supergateway/issues/378
 - 2026-11-17: VulDB submission (this document)
 
 ## Credits

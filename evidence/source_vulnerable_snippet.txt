@@ -1,0 +1,25 @@
+# vulnerable source: src/gateways/stdioToSse.ts @ 5ad19d3
+   125	  const sessions: SseSessions = {}
+   221	  // @ts-ignore
+   222	  app.post(messagePath, async (req, res) => {
+   223	    const sessionId = req.query.sessionId as string
+   224	
+   225	    setResponseHeaders(res, headers)
+   226	
+   227	    if (!sessionId) {
+   228	      return res.status(400).send('Missing sessionId parameter')
+   229	    }
+   230	
+   231	    const session = sessions[sessionId]
+   232	    // A session is stored with its transport, and kept only while it is open.
+   233	    if (session) {
+   234	      logger.info(`POST to SSE transport (session ${sessionId})`)
+   235	      await session.transport.handlePostMessage(req, res)
+   236	    } else {
+   237	      res.status(503).send(`No active SSE connection for session ${sessionId}`)
+   238	    }
+   239	  })
+
+# sha256:
+4cc21b4412d0936ca3f05b0ad4b67d58150afb45f0d40e700418a010ed5c5204  src/gateways/stdioToSse.ts
+35ab672976835e8d6c8c1152aecbcea39f3b497080b89b9d3e88044803978280  src/gateways/sseSession.ts

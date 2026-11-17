@@ -1,0 +1,15 @@
+[*] git apply /home/kali/BugBounty/supergateway/20261117/201425/pocs/proposed_fix.patch
+ src/gateways/sseSession.ts | 30 ++++++++++++++++--------------
+ src/gateways/stdioToSse.ts | 11 ++++++++---
+ 2 files changed, 24 insertions(+), 17 deletions(-)
+[*] patched build OK -> testing
+  patched POST sessionId=toString -> 503
+  patched POST sessionId=__proto__ -> 503
+  patched POST sessionId=constructor -> 503
+  patched POST sessionId=hasOwnProperty -> 503
+  patched POST sessionId=valueOf -> 503
+  process=alive
+  health=200
+  legit tool call returned canary (session 034fb3e2-ff88-4eaa-a730-83caca37c8b6)
+[*] restoring source tree
+[+] FIX VALIDATED

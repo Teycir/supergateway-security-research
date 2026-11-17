@@ -1,0 +1,1 @@
+CSWSH ws://127.0.0.1:44675/ws origin=http://evil.example -> SGW-CANARY-7f3a9c1e-DO-NOT-LEAK

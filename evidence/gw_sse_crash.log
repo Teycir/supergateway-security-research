@@ -1,0 +1,34 @@
+[supergateway] Starting...
+[supergateway] Supergateway is supported by Supercov - Coverage for coding agents and software factories 🌙 - https://supercov.com
+[supergateway]   - outputTransport: sse
+[supergateway]   - Headers: (none)
+[supergateway]   - port: 18084
+[supergateway]   - stdio: python3 /home/kali/BugBounty/supergateway/20261117/201425/pocs/canary_mcp_server.py
+[supergateway]   - baseUrl: http://127.0.0.1:18084
+[supergateway]   - ssePath: /sse
+[supergateway]   - messagePath: /message
+[supergateway]   - CORS: disabled
+[supergateway]   - Health endpoints: /healthz
+[supergateway] Listening on port 18084
+[supergateway] SSE endpoint: http://localhost:18084/sse
+[supergateway] POST messages: http://localhost:18084/message
+[supergateway] WARNING: No API key is set, so anyone who can reach port 18084 on this machine (the gateway listens on every network interface) can use the MCP server. Set --apiKey or SUPERGATEWAY_API_KEY to require a key, or --host 127.0.0.1 to accept local connections only.
+[supergateway] New SSE connection from ::ffff:127.0.0.1
+[supergateway] POST to SSE transport (session toString)
+file:///home/kali/audit/supergateway/dist/gateways/stdioToSse.js:135
+            await session.transport.handlePostMessage(req, res);
+                                    ^
+
+TypeError: Cannot read properties of undefined (reading 'handlePostMessage')
+    at file:///home/kali/audit/supergateway/dist/gateways/stdioToSse.js:135:37
+    at Layer.handle [as handle_request] (/home/kali/audit/supergateway/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/kali/audit/supergateway/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/kali/audit/supergateway/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/kali/audit/supergateway/node_modules/express/lib/router/layer.js:95:5)
+    at /home/kali/audit/supergateway/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/kali/audit/supergateway/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/kali/audit/supergateway/node_modules/express/lib/router/index.js:280:10)
+    at handler (file:///home/kali/audit/supergateway/dist/lib/apiKey.js:130:20)
+    at Layer.handle [as handle_request] (/home/kali/audit/supergateway/node_modules/express/lib/router/layer.js:95:5)
+
+Node.js v22.21.0

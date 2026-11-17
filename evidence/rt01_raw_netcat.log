@@ -1,0 +1,4 @@
+[*] raw HTTP via nc (no curl): POST /message?sessionId=toString
+[*] nc pipeline rc=0
+[+] process=dead
+[*] health after=000

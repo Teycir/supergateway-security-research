@@ -1,0 +1,22 @@
+5ad19d39c033fde33f18c2edefa996771980aafe
+v22.21.0
+supergateway@4.2.2 /home/kali/audit/supergateway
+├── @modelcontextprotocol/client@2.0.0
+├── @modelcontextprotocol/node@2.0.0
+├── @modelcontextprotocol/sdk@1.30.0
+├── @modelcontextprotocol/server@2.0.0
+├── @types/body-parser@1.19.6
+├── @types/cors@2.8.19
+├── @types/express@5.0.6
+├── @types/node@22.20.4
+├── @types/ws@8.18.2
+├── @types/yargs@17.0.35
+├── @typescript-eslint/eslint-plugin@8.71.0
+├── @typescript-eslint/parser@8.71.0
+├── body-parser@1.20.8
+├── cors@2.8.6
+├── cross-spawn@7.0.6
+├── esbuild@0.25.2
+├── eslint@10.11.0
+├── express@4.22.3
+├── fast-check@4.10.2

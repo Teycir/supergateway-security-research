@@ -1,0 +1,1 @@
+29:[supergateway] SSE → Child (session 65c54698-d4d0-4f77-9c4c-a18a984933e6): {"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"_meta":{"password":"S3cr3t-LogMarker-42"},"name":"read_file","arguments":{"path":"/home/kali/audit/canary.txt"}}}

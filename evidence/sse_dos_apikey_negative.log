@@ -1,0 +1,4 @@
+[*] with --apiKey, unauthenticated payload:
+  status=401
+  health after = 200
+  process=alive (protected)

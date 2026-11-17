@@ -1,0 +1,32 @@
+[supergateway] Starting...
+[supergateway] Supergateway is supported by Supercov - Coverage for coding agents and software factories 🌙 - https://supercov.com
+[supergateway]   - outputTransport: sse
+[supergateway]   - Headers: (none)
+[supergateway]   - port: 18085
+[supergateway]   - stdio: python3 /home/kali/BugBounty/supergateway/20261117/201425/pocs/canary_mcp_server.py
+[supergateway]   - baseUrl: http://127.0.0.1:18085
+[supergateway]   - ssePath: /sse
+[supergateway]   - messagePath: /message
+[supergateway]   - CORS: disabled
+[supergateway]   - Health endpoints: (none)
+[supergateway] Listening on port 18085
+[supergateway] SSE endpoint: http://localhost:18085/sse
+[supergateway] POST messages: http://localhost:18085/message
+[supergateway] WARNING: No API key is set, so anyone who can reach port 18085 on this machine (the gateway listens on every network interface) can use the MCP server. Set --apiKey or SUPERGATEWAY_API_KEY to require a key, or --host 127.0.0.1 to accept local connections only.
+[supergateway] New SSE connection from ::ffff:127.0.0.1
+[supergateway] POST to SSE transport (session 65c54698-d4d0-4f77-9c4c-a18a984933e6)
+[supergateway] SSE → Child (session 65c54698-d4d0-4f77-9c4c-a18a984933e6): {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"logtest","version":"1"}}}
+[supergateway] Child → SSE (session 65c54698-d4d0-4f77-9c4c-a18a984933e6): {
+  jsonrpc: '2.0',
+  id: 1,
+  result: {
+    protocolVersion: '2024-11-05',
+    capabilities: { tools: {} },
+    serverInfo: { name: 'canary-fs', version: '1.0' }
+  }
+}
+[supergateway] POST to SSE transport (session 65c54698-d4d0-4f77-9c4c-a18a984933e6)
+[supergateway] SSE → Child (session 65c54698-d4d0-4f77-9c4c-a18a984933e6): {"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"_meta":{"password":"S3cr3t-LogMarker-42"},"name":"read_file","arguments":{"path":"/home/kali/audit/canary.txt"}}}
+[supergateway] Child → SSE (session 65c54698-d4d0-4f77-9c4c-a18a984933e6): { jsonrpc: '2.0', id: 2, result: { content: [ [Object] ] } }
+[supergateway] Caught SIGTERM. Exiting...
+[supergateway] Child exited (session 65c54698-d4d0-4f77-9c4c-a18a984933e6): code=null, signal=SIGTERM

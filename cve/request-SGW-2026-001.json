@@ -64,7 +64,7 @@
       ],
       "references": [
         {
-          "url": "<REPO-URL>",
+          "url": "https://github.com/Teycir/supergateway-security-research",
           "name": "Research repository with PoC, evidence and validated patch"
         },
         {

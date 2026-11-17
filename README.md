@@ -69,7 +69,7 @@ Both advisories were submitted and published via the GitHub Security Advisory AP
 - 2026-11-17 — Research repository made public: https://github.com/Teycir/supergateway-security-research
 - **CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`. Awaiting upstream response for canonical GHSA submission and CVE assignment.**
 
-Contact: `<SECURITY-CONTACT>` (replace before publication). The maintainers' own policy is in the upstream `SECURITY.md`.
+Contact: Teycir (@Teycir) via GitHub issues or the upstream issue #378. The maintainers' own policy is in the upstream `SECURITY.md`.
 
 ## Credits
 

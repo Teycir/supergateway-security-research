@@ -45,11 +45,25 @@ scripts/        bootstrap, reproduce, checksums
 
 All work was performed in an isolated lab against local instances. The PoCs bind to loopback by default and require an explicit target URL otherwise. Use only against systems you own or are authorised to test. Logs in `evidence/` contain lab paths and test values (test API key `K3yTest`, canary `SGW-CANARY-…`); none are production secrets.
 
+## Plain-language explanations
+
+See `docs/vulnerabilities-simple.md` for simple, non-technical descriptions of both bugs and their attack paths.
+
+## GHSA submission
+
+Both advisories were submitted and published via the GitHub Security Advisory API (token `Teycir`) on 2026-11-17. Because the token only has read access to upstream `supercorp-ai/supergateway`, the advisories live under the `Teycir/supergateway` fork:
+
+| Research ID | GHSA ID | Finding | Published |
+|-------------|---------|---------|-----------|
+| SGW-2026-001 | GHSA-96g7-x7h4-cr9v | Unauthenticated remote DoS via prototype-chain `sessionId` | 2026-11-17T21:04:55Z |
+| SGW-2026-002 | GHSA-mw77-x7vj-mfcc | Cross-Site WebSocket Hijacking via missing `Origin` validation | 2026-11-17T21:05:13Z |
+
 ## Disclosure
 
 - 2026-11-17 — findings discovered and verified; report and PoCs produced.
 - 2026-11-17 — re-verified 36/36; patch validated; this package assembled.
-- **Vendor notification: not yet sent.** CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`.
+- 2026-11-17 — GHSA advisories submitted and published (see table above).
+- **Vendor notification: not yet sent.** CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`. For canonical disclosure, use GitHub's private "Report a vulnerability" flow addressed to upstream maintainer @Nedomas, referencing upstream PR #178 as prior art for the fix shape, and cite the GHSA IDs above as the reproduced evidence.
 
 Contact: `<SECURITY-CONTACT>` (replace before publication). The maintainers' own policy is in the upstream `SECURITY.md`.
 

@@ -1,0 +1,102 @@
+diff --git a/src/gateways/sseSession.ts b/src/gateways/sseSession.ts
+index 557b703..51242c9 100644
+--- a/src/gateways/sseSession.ts
++++ b/src/gateways/sseSession.ts
+@@ -11,14 +11,16 @@ import type { Logger } from '../types.js'
+ import type { JSONRPCMessage } from '@modelcontextprotocol/sdk/types.js'
+ import { drained } from '../lib/outputBackpressure.js'
+ 
+-export type SseSessions = Record<
+-  string,
+-  {
+-    server: Server
+-    transport: SSEServerTransport
+-    response: express.Response
+-  }
+->
++export interface SseSessionEntry {
++  server: Server
++  transport: SSEServerTransport
++  response: express.Response
++}
++
++// A Map, not an object: an unissued id such as `toString` or `__proto__`
++// resolved through Object.prototype and crashed the gateway when its missing
++// `transport` was dereferenced.
++export type SseSessions = Map<string, SseSessionEntry>
+ 
+ /**
+  * One SSE connection: its own `Server` and child, the client's calls the
+@@ -48,7 +50,7 @@ export class SseSession {
+   ) {
+     const sessionId = (this.sessionId = transport.sessionId)
+     this.label = `Session ${sessionId}`
+-    sessions[sessionId] = { server, transport, response: res }
++    sessions.set(sessionId, { server, transport, response: res })
+     this.connection = new ConnectionChild(
+       peer,
+       this.owner(),
+@@ -103,10 +105,10 @@ export class SseSession {
+   // its child failed stops it.
+   private end(report: () => void, clientLeft = false) {
+     const { sessions, sessionId } = this
+-    if (!sessions[sessionId]) return
++    if (!sessions.has(sessionId)) return
+     report()
+-    const { server } = sessions[sessionId]
+-    delete sessions[sessionId]
++    const { server } = sessions.get(sessionId)!
++    sessions.delete(sessionId)
+     this.connection.end(clientLeft)
+     server.close().catch((err) => {
+       this.logger.error(`Failed to close session ${sessionId}:`, err)
+@@ -141,7 +143,7 @@ export class SseSession {
+         if ('id' in jsonMsg && !('method' in jsonMsg))
+           this.pending.delete(jsonMsg.id)
+         logger.info(`Child → SSE (session ${sessionId}):`, jsonMsg)
+-        if (!sessions[sessionId]) return
++        if (!sessions.has(sessionId)) return
+         this.transport.send(jsonMsg).catch((err) => {
+           this.end(() =>
+             logger.error(`Failed to send to session ${sessionId}:`, err),
+@@ -161,7 +163,7 @@ export class SseSession {
+       },
+       exit: (code, signal) => {
+         const detail = `Child exited (session ${sessionId}): code=${code}, signal=${signal}`
+-        if (!sessions[sessionId]) {
++        if (!sessions.has(sessionId)) {
+           logger.info(detail)
+           return
+         }
+diff --git a/src/gateways/stdioToSse.ts b/src/gateways/stdioToSse.ts
+index 1831a1f..63b2185 100644
+--- a/src/gateways/stdioToSse.ts
++++ b/src/gateways/stdioToSse.ts
+@@ -122,7 +122,7 @@ export function stdioToSseMount(args: StdioToSseMountArgs): Mount {
+   // made this the most reported crash in the tracker (#112, #138, #153).
+   //
+   // The shape is taken from @sfasching's #113.
+-  const sessions: SseSessions = {}
++  const sessions: SseSessions = new Map()
+ 
+   const app = express()
+   app.use((_req, res, next) => {
+@@ -228,11 +228,16 @@ export function stdioToSseMount(args: StdioToSseMountArgs): Mount {
+       return res.status(400).send('Missing sessionId parameter')
+     }
+ 
+-    const session = sessions[sessionId]
++    const session = sessions.get(sessionId)
+     // A session is stored with its transport, and kept only while it is open.
+     if (session) {
+       logger.info(`POST to SSE transport (session ${sessionId})`)
+-      await session.transport.handlePostMessage(req, res)
++      try {
++        await session.transport.handlePostMessage(req, res)
++      } catch (err) {
++        logger.error(`Failed to handle POST for session ${sessionId}:`, err)
++        if (!res.headersSent) res.status(500).end()
++      }
+     } else {
+       res.status(503).send(`No active SSE connection for session ${sessionId}`)
+     }

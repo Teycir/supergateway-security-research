@@ -68,6 +68,7 @@ Both advisories were submitted and published via the GitHub Security Advisory AP
 - 2026-11-17 — **Vendor contacted via public issue #378**: https://github.com/supercorp-ai/supergateway/issues/378
 - 2026-11-17 — Research repository made public: https://github.com/Teycir/supergateway-security-research
 - 2026-11-17 — **VulDB submissions submitted** (both vulnerabilities, IDs pending processing)
+- 2026-11-17 — **VulnCheck submission submitted** (SGW-2026-002: ID 8d6ec57c-cd0e-4ea1-9727-4608822f3442)
 - **CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`. Awaiting upstream response for canonical GHSA submission and CVE assignment.**
 
 Contact: Teycir (@Teycir) via GitHub issues or the upstream issue #378. The maintainers' own policy is in the upstream `SECURITY.md`.

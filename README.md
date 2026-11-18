@@ -2,10 +2,10 @@
 
 Two independently reproducible vulnerabilities in [supergateway](https://github.com/supercorp-ai/supergateway), the MCP stdio↔network bridge, with working exploits, captured proof, and a validated patch.
 
-| ID | Finding | Mode | Severity | CWE | Status |
-|---|---|---|---|---|---|
-| [SGW-2026-001](advisories/SGW-2026-001.md) | Unauthenticated remote DoS via prototype-chain `sessionId` | stdio → SSE | **High 7.5** | CWE-248 / CWE-754 | CVE requested |
-| [SGW-2026-002](advisories/SGW-2026-002.md) | Cross-Site WebSocket Hijacking (no `Origin` check) | stdio → WS | **High 8.1** | CWE-1385 | CVE requested |
+| ID | Finding | Mode | Severity | CWE | CVE (VulnCheck assigned) | Status |
+|---|---|---|---|---|---|---|
+| [SGW-2026-001](advisories/SGW-2026-001.md) | Unauthenticated remote DoS via prototype-chain `sessionId` | stdio → SSE | **High 7.5** | CWE-248 / CWE-754 | <img src="assignedCVE/CVE-2026-131857.png" width="200" alt="CVE-2026-131857"><br>[CVE-2026-131857](https://www.cve.org/CVERecord?id=CVE-2026-131857) | CVE assigned |
+| [SGW-2026-002](advisories/SGW-2026-002.md) | Cross-Site WebSocket Hijacking (no `Origin` check) | stdio → WS | **High 8.1** | CWE-1385 | <img src="assignedCVE/CVE-2026-132121.png" width="200" alt="CVE-2026-132121"><br>[CVE-2026-132121](https://www.cve.org/CVERecord?id=CVE-2026-132121) | CVE assigned |
 | [RT-03](docs/analysis.md#rt-03-information-disclosure-in-logs) | Full JSON-RPC requests logged at `info` (credentials, tool arguments) | SSE | Medium 6.4 | CWE-532 | Included with 001 |
 
 Verified against **supergateway 4.2.2**, commit [`5ad19d3`](https://github.com/supercorp-ai/supergateway/tree/5ad19d39c033fde33f18c2edefa996771980aafe) (tag `v4.2.2-4-g5ad19d3`), Node.js 22.21.0, Linux.
@@ -68,8 +68,8 @@ Both advisories were submitted and published via the GitHub Security Advisory AP
 - 2026-11-17 — **Vendor contacted via public issue #378**: https://github.com/supercorp-ai/supergateway/issues/378
 - 2026-11-17 — Research repository made public: https://github.com/Teycir/supergateway-security-research
 - 2026-11-17 — **VulDB submissions submitted** (both vulnerabilities, IDs pending processing)
-- 2026-11-17 — **VulnCheck submissions submitted** (both vulnerabilities: SGW-2026-001: 8d6ec57c-cd0e-4ea1-9727-4608822f3442, SGW-2026-002: 844df8d2-8b17-4072-8af1-ea68aab893fe)
-- **CVE request text and JSON are prepared in `docs/cve-request.md` and `cve/`. Awaiting upstream response for canonical GHSA submission and CVE assignment.**
+- 2026-11-17 — **VulnCheck submissions submitted** (both vulnerabilities: SGW-2026-001: 8d6ec57c-cd0e-4ea1-9727-4608822f3442 → CVE-2026-131857, SGW-2026-002: 844df8d2-8b17-4072-8af1-ea68aab893fe → CVE-2026-132121)
+- **CVEs assigned by VulnCheck** (certified CNA): SGW-2026-001 → CVE-2026-131857 (DoS), SGW-2026-002 → CVE-2026-132121 (CSWSH). CVE request text and JSON remain in `docs/cve-request.md` and `cve/` for upstream canonical GHSA submission.
 
 Contact: Teycir (@Teycir) via GitHub issues or the upstream issue #378. The maintainers' own policy is in the upstream `SECURITY.md`.
 
